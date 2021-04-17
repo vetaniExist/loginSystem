@@ -40,3 +40,24 @@ function tryLogin($mail, $pass) {
 
     header('location:../../');
 }
+
+function getUsersList() {
+    global $dbHost, $dhUser, $dbPass, $dbName;
+
+    $mysql = new mysqli($dbHost, $dhUser, $dbPass, $dbName);
+    $selectResult=$mysql->query("SELECT * FROM `users`");
+
+    $mysql->close();
+    $result = "<tr>";
+    while ($row = mysqli_fetch_assoc($selectResult)) {
+        echo "<tr><td><input type='checkbox'></td>";
+        echo "<td>".$row["id"]."</td>";
+        echo "<td>".$row["name"]."</td>";
+        echo "<td>".$row["mail"]."</td>";
+        echo "<td>".$row["registration_date"]."</td>";
+        echo "<td>".$row["last_login_date"]."</td>";
+        echo "<td>".$row["status"]."</td></tr>";
+        // print_r($row);
+    }
+ 
+}
