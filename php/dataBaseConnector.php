@@ -19,3 +19,24 @@ function insertUserIntoDB($userName, $email, $pass)
         header("location:javascript://history.go(-1)");
     }
 }
+
+function tryLogin($mail, $pass) {
+    global $solt, $dbHost, $dhUser, $dbPass, $dbName;
+    $pass = MD5($pass . $solt);
+
+    $mysql = new mysqli($dbHost, $dhUser, $dbPass, $dbName);
+
+    $result=$mysql->query("SELECT * FROM `users` WHERE mail='$mail' AND pass='$pass'");
+    $user=$result->fetch_assoc();
+
+    $mysql->close();
+
+    if (mysqli_num_rows($result) == 0) {
+        header("location:javascript://history.go(-1)");
+        exit;
+    }
+    setcookie("email", $user['mail'], time() + 1200, "/");
+    setcookie("pass", $user['pass'], time() + 1200, "/");
+
+    header('location:../../');
+}
