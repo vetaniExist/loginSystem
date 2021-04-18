@@ -52,7 +52,14 @@ function getUsersList() {
 
     $mysql->close();
     while ($row = mysqli_fetch_assoc($selectResult)) {
-        echo "<tr><td><input type='checkbox' class='checkbox' value='" . $row["id"] . "'></td>";
+        $rowID = $row["id"];
+        echo "<tr>";
+
+        /* echo "<td><input type='checkbox' class='checkbox' form = 'checkboxBlockForm' value='" . $row["id"] . "'>"; */
+        echo "<td><input type='checkbox' class='checkbox' form = 'checkboxBlockForm' name='checkbox[]' value='$rowID'></td>";
+/*         echo "<input type='checkbox' class ='checkbox_del' form = 'checkboxUnlockForm value='" . $row["id"] . "'>";
+        echo "<input type='checkbox' class ='checkbox_del' form = 'checkboxDelForm value='" . $row["id"] . "'>"  . "</td>"; */
+
         echo "<td>".$row["id"]."</td>";
         echo "<td>".$row["name"]."</td>";
         echo "<td>".$row["mail"]."</td>";

@@ -5,3 +5,7 @@
 .mw-80 {
     max-width: 80px;
 }
+
+.checkbox_del {
+    display: none;
+}

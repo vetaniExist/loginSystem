@@ -10,14 +10,22 @@
     <link rel="stylesheet" href="../../style.css">
 </head>
 <?php
-    if (isset($_COOKIE["email"]) || isset($_COOKIE["pass"])) :
+    include_once ("../auth/checkAuthStatus.php");
+    if (isset($_COOKIE["email"]) || isset($_COOKIE["pass"]) || checkStatus($_COOKIE["email"], $_COOKIE["pass"])) :
 ?>
 <body>
-    <form action="" id="checkboxForm"></form>
-    <div class="">
-        <button class = "btn btn-secondary mb-1 mw-80">Block</button>
-        <button class="btn btn-light"><img src="./images/lock.svg" alt=""></button>
-        <button class="btn btn-light"><img src="./images/trash.svg" alt=""></button>
+    <div class="d-flex">
+        <form action="../../php/users/block.php" id="checkboxBlockForm" method="POST">
+            <button class="btn btn-secondary mb-1 mw-80" type="submit" name="block">Block</button>
+        </form>
+
+        <form action="../../php/users/unlock.php" id="checkboxUnlockForm" method="POST">
+            <button class="btn btn-light" type="submit"><img src="./images/lock.svg" alt=""></button>
+        </form>
+        
+        <form action="../../php/users/delete.php" id="checkboxDelForm" method="POST">
+            <button class="btn btn-light"type="submit"><img src="./images/trash.svg" alt=""></button>
+        </form>
     </div>
     <table class="table table-striped table-bordered table-hover">
         <thead class="thead-dark">

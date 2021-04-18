@@ -12,7 +12,8 @@
 
 <body class="vh-100">
     <?php
-    if (!isset($_COOKIE["email"]) || !isset($_COOKIE["pass"])) :
+    include_once "./pages/auth/checkAuthStatus.php";
+    if (!isset($_COOKIE["email"]) || !isset($_COOKIE["pass"]) || !checkStatus($_COOKIE["email"], $_COOKIE["pass"])) :
     ?>
         <div class="mb-3 d-flex justify-content-center vh-100">
             <div class="mw-500 d-flex flex-column justify-content-center">
