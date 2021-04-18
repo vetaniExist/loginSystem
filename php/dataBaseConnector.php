@@ -4,7 +4,7 @@ include_once "conf.php";
 function insertUserIntoDB($userName, $email, $pass)
 {
     global $solt, $dbHost, $dhUser, $dbPass, $dbName;
-    $status = "logged in";
+    $status = "ACTIVE";
     $pass = MD5($pass . $solt);
 
     $mysql = new mysqli($dbHost, $dhUser, $dbPass, $dbName);
@@ -14,7 +14,7 @@ function insertUserIntoDB($userName, $email, $pass)
     if ($insertReult) {
         setcookie("email", $email, time() + 1200, "/");
         setcookie("pass", $pass, time() + 1200, "/");
-        echo "succes";
+        header('location:../../');
     } else {
         header("location:javascript://history.go(-1)");
     }
@@ -55,10 +55,9 @@ function getUsersList() {
         $rowID = $row["id"];
         echo "<tr>";
 
-        /* echo "<td><input type='checkbox' class='checkbox' form = 'checkboxBlockForm' value='" . $row["id"] . "'>"; */
-        echo "<td><input type='checkbox' class='checkbox' form = 'checkboxBlockForm' name='checkbox[]' value='$rowID'></td>";
-/*         echo "<input type='checkbox' class ='checkbox_del' form = 'checkboxUnlockForm value='" . $row["id"] . "'>";
-        echo "<input type='checkbox' class ='checkbox_del' form = 'checkboxDelForm value='" . $row["id"] . "'>"  . "</td>"; */
+        echo "<td><input type='checkbox' class='checkbox' form = 'checkboxBlockForm' name='checkbox[]' value='$rowID'>";
+        echo "<input type='checkbox' class ='checkbox_unlock' form = 'checkboxUnlockForm' name='checkboxUnlock[]' value='$rowID'>";
+        echo "<input type='checkbox' class ='checkbox_del' form = 'checkboxDelForm' name='checkboxDel[]' value='$rowID'></td>";
 
         echo "<td>".$row["id"]."</td>";
         echo "<td>".$row["name"]."</td>";

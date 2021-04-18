@@ -20,11 +20,11 @@
         </form>
 
         <form action="../../php/users/unlock.php" id="checkboxUnlockForm" method="POST">
-            <button class="btn btn-light" type="submit"><img src="./images/lock.svg" alt=""></button>
+            <button class="btn btn-light" type="submit" name="unlock"><img src="./images/lock.svg" alt=""></button>
         </form>
         
         <form action="../../php/users/delete.php" id="checkboxDelForm" method="POST">
-            <button class="btn btn-light"type="submit"><img src="./images/trash.svg" alt=""></button>
+            <button class="btn btn-light"type="submit" name="delete"><img src="./images/trash.svg" alt=""></button>
         </form>
     </div>
     <table class="table table-striped table-bordered table-hover">
