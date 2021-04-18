@@ -14,6 +14,11 @@
 ?>
 <body>
     <form action="" id="checkboxForm"></form>
+    <div class="">
+        <button class = "btn btn-secondary mb-1 mw-80">Block</button>
+        <button class="btn btn-light"><img src="./images/lock.svg" alt=""></button>
+        <button class="btn btn-light"><img src="./images/trash.svg" alt=""></button>
+    </div>
     <table class="table table-striped table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
