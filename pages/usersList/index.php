@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../style.css">
 </head>
-
+<?php
+    if (isset($_COOKIE["email"]) || isset($_COOKIE["pass"])) :
+?>
 <body>
     <form action="" id="checkboxForm"></form>
     <table class="table table-striped table-bordered table-hover">
@@ -31,5 +33,10 @@
     </table>
     <a href="../logout/" class="btn btn-primary">EXIT</a>
 </body>
+<?php
+else:
+    header('location: ../../');
+endif;
+?>
 <script src="./selectAll.js"></script>
 </html>

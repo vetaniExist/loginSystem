@@ -29,6 +29,9 @@ function tryLogin($mail, $pass) {
     $result=$mysql->query("SELECT * FROM `users` WHERE mail='$mail' AND pass='$pass'");
     $user=$result->fetch_assoc();
 
+    $id = $user["id"];
+    $mysql->query("UPDATE `users` SET last_login_date = NOW() WHERE id = '$id'");
+
     $mysql->close();
 
     if (mysqli_num_rows($result) == 0) {
